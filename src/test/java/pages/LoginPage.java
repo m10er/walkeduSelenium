@@ -73,6 +73,16 @@ public class LoginPage extends BasePage {
     public void clickSubmitButton() {
         logger.info("Clicking submit button");
         clickWithJS(submitButton);
+        waitForPageLoad();
     }
+
+    /**
+     * Check the Bir seyler Ters gitti Text is displayed.
+     */
+    public boolean isDisplayedBirseylerTersGitti(){
+        waitForPageLoad();
+        return driver.findElement(birseylerTersGittiText).isDisplayed();
+    }
+
 
 }

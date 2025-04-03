@@ -189,18 +189,4 @@ public abstract class BasePage implements IPageActions, IElementActions {
         jsHelper.sendKeys(element, value);
     }
 
-    public boolean isDisplayed(By by){
-        WebElement element= driver.findElement(by);
-        boolean result= false;
-        try {
-            waitForPageLoad();
-            if (element.isDisplayed()){
-                result=true;
-            }
-        }catch (Exception e){
-            System.out.println(e);
-            logger.error("elemnet is not displayed");
-        }
-        return result;
-    }
 }

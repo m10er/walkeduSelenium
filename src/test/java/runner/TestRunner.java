@@ -9,12 +9,10 @@ import org.junit.runner.RunWith;
     features = "src/test/resources/features",
     glue = "steps",
     plugin = {
-        "pretty",
         "html:target/cucumber-reports/cucumber-pretty",
         "json:target/cucumber-reports/CucumberTestReport.json"
     },
-        tags = "@contact",
-    monochrome = true
+        tags = "@login"
 )
 public class TestRunner {
 } 

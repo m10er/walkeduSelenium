@@ -6,6 +6,6 @@ import org.junit.Assert;
 public class NavbarSteps extends BaseSteps{
     @Then("Kullanici Profilini goruntuleyebilecegi Hesabim butonunu Navbarda goruntuler.")
     public void kullaniciProfiliniGoruntuleyebilecegiHesabimButonunuNavbardaGoruntuler() {
-        Assert.assertTrue(pageManager.navbarPage.isDisplayed(pageManager.navbarPage.hesabimButton));
+        Assert.assertTrue(pageManager.navbarPage.isDiplayedHesabimButton());
     }
 }

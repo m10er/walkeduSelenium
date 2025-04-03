@@ -1,6 +1,5 @@
 package pages;
 
-import model.LoginBody;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.slf4j.Logger;
@@ -15,7 +14,8 @@ public class NavbarPage extends BasePage {
 
     // Form field locators
     /** Locator for Hesabim button */
-    public final By hesabimButton = By.xpath("(//button[.='Hesabım'])[1]");
+    public final By hesabimButton = By.xpath("(//button[@data-state=\"closed\"])[1]");
+
 
     /**
      * Constructor for NavbarPage.
@@ -30,9 +30,18 @@ public class NavbarPage extends BasePage {
      * Waits for the page to load completely.
      */
     @Override
-    protected void navigateToPage() {
+    public void navigateToPage() {
         waitForPageLoad();
     }
+
+    /**
+     * Check the Hesabim Button is displayed
+     */
+    public boolean isDiplayedHesabimButton() {
+        waitForElementVisible(hesabimButton);
+        return driver.findElement(hesabimButton).isDisplayed();
+    }
+
 
 
 }

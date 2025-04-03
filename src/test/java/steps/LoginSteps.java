@@ -47,7 +47,7 @@ public class LoginSteps extends BaseSteps{
 
     @Then("Kullanici Gecersiz email veya password hatasini goruntuler.")
     public void kullaniciGecersizEmailVeyaPasswordHatasiniGoruntuler() {
-        Assert.assertTrue(pageManager.loginPage.isDisplayed(pageManager.loginPage.birseylerTersGittiText));
+        Assert.assertTrue(pageManager.loginPage.isDisplayedBirseylerTersGitti());
     }
 
     @And("kullanici login formu gecerli email ve sifre ile doldurur")
