@@ -1,0 +1,42 @@
+name: Selenium Cucumber CI
+
+on:
+  push:
+    branches:
+      - main
+      - develop
+  pull_request:
+    branches:
+      - main
+      - develop
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Depoyu Kopyala
+        uses: actions/checkout@v4
+
+      - name: Java Kurulumu
+        uses: actions/setup-java@v3
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+          cache: 'maven'
+
+      - name: Maven Bağımlılıklarını Yükle
+        run: mvn clean install -DskipTests
+
+      - name: Selenium Cucumber Testlerini Çalıştır
+        run: mvn test
+
+      - name: Allure Raporlarını Oluştur
+        run: mvn allure:report
+
+      - name: Test Sonuçlarını ve Allure Raporlarını Kaydet
+        if: always()
+        uses: actions/upload-artifact@v3
+        with:
+          name: allure-results
+          path: target/allure-report
