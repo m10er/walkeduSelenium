@@ -34,14 +34,14 @@ jobs:
         run: mvn clean install -DskipTests
 
       - name: Selenium Cucumber Testlerini Çalıştır
-        run: mvn test || true  # Testler başarısız olsa bile workflow devam etsin
+        run: mvn test || echo "Testler başarısız oldu, ancak süreç devam ediyor."
 
       - name: Allure Raporlarını Oluştur
-        run: mvn allure:report || true  # Hata olsa bile çalışmaya devam et
+        run: mvn allure:generate || echo "Allure raporu oluşturulamadı, ancak süreç devam ediyor."
 
       - name: Test Sonuçlarını ve Allure Raporlarını Kaydet
         if: always()
-        uses: actions/upload-artifact@v4  # v3 yerine v4 kullanıldı
+        uses: actions/upload-artifact@v4
         with:
           name: allure-results
-          path: target/allure-report
+          path: target/allure-results
